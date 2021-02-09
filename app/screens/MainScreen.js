@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import { PRIMARY, DISABLED } from '../components/constants/Colors'
 
 import RouletteScreen from '../screens/RouletteScreen'
 import FavouritesScreen from '../screens/FavouriteScreen'
@@ -29,8 +30,8 @@ const MainScreen = ({ navigation }) => (
     tabBarOptions={{
       activeBackgroundColor: 'transparent',
       // TAB COLOURS
-      activeTintColor: 'red',
-      inactiveTintColor: 'gray',
+      activeTintColor: PRIMARY,
+      inactiveTintColor: DISABLED,
     }}
   >
     <Tab.Screen name='Roulette' component={RouletteScreen} />
