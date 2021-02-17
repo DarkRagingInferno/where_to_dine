@@ -1,23 +1,23 @@
 import React, { useCallback } from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import RouletteScreen from "../screens/RouletteScreen";
-// import FavouritesScreen from "../screens/FavouriteScreen";
+import FavouriteScreen from "../screens/FavouriteScreen";
 
 // const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
-const MainScreen = ({ navigation }) => {
+const FavouriteStackScreen = ({ navigation }) => {
   return (
-    <Stack.Navigator initialRouteName="Home" mode="modal">
-      <Stack.Screen
-        name="Roulette"
-        component={RouletteScreen}
-        options={{ headerTitleAlign: "center" }}
-      />
-    </Stack.Navigator>
+   
+        <Stack.Navigator initialRouteName="Home" mode="modal">
+          <Stack.Screen
+            name="Favourites"
+            component={FavouriteScreen}
+            options={{ headerTitleAlign: "center" }}
+          />
+        </Stack.Navigator>
+
   );
 };
 // return (
@@ -57,4 +57,4 @@ const MainScreen = ({ navigation }) => {
 //     }
 // })
 
-export default MainScreen;
+export default FavouriteStackScreen;
