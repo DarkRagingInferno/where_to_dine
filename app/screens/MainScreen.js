@@ -11,11 +11,14 @@ const Stack = createStackNavigator();
 
 const MainScreen = ({ navigation }) => {
   return (
-    <Stack.Navigator initialRouteName="Home" mode="modal">
+    <Stack.Navigator 
+      initialRouteName="Home" 
+      mode="modal"
+    >
       <Stack.Screen
         name="Roulette"
         component={RouletteScreen}
-        options={{ headerTitleAlign: "center" }}
+        options={{ headerTitleAlign: "center", headerShown: true, headerTransparent: false}}
       />
     </Stack.Navigator>
   );

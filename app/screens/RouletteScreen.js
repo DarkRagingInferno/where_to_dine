@@ -60,7 +60,13 @@ const RouletteScreen = ({ navigation }) => {
     }));
     return data;
   };
-  return <View>{data && <WheelContainer data={ data } />}</View>;
+  return <View style={styles.container}>{data && <WheelContainer data={ data } />}</View>;
 };
+
+const styles = StyleSheet.create({
+  container: {
+    zIndex: -1
+  }
+})
 
 export default RouletteScreen;

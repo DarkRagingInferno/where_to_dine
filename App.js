@@ -47,19 +47,6 @@ export default function App() {
       </NavigationContainer>
     </SafeAreaProvider>
   )
-  // return (
-  //   <SafeAreaProvider>
-  //     <NavigationContainer style={styles.container}>
-  //       <Stack.Navigator initialRouteName="Home" mode="modal">
-  //         <Stack.Screen
-  //           name="Home"
-  //           component={MainScreen}
-  //           options={{ headerTitleAlign: 'center'}}
-  //         />
-  //       </Stack.Navigator>
-  //     </NavigationContainer>
-  //   </SafeAreaProvider>
-  // );
 }
 
 const styles = StyleSheet.create({
