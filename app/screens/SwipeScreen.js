@@ -8,10 +8,9 @@ import {
   Animated,
   PanResponder,
 } from 'react-native'
+import SwipeCards from 'react-native-swipe-cards-deck'
 import { apiKey, restaurantFetch } from '../components/constants/Constants'
-
-const SCREEN_HEIGHT = Dimensions.get('window').height
-const SCREEN_WIDTH = Dimensions.get('window').width
+import CardDeck from '../components/CardDeck'
 
 const SwipeScreen = () => {
   const [location, setLocation] = useState('Vancouver, BC')
@@ -35,47 +34,47 @@ const SwipeScreen = () => {
     return data
   }
 
-  const swipeStack = () =>
-    data &&
-    data.map((restaurant) => {
-      const pan = new Animated.ValueXY()
-      const panResponder = PanResponder.create({
-        onStartShouldSetPanResponder: (evt, gestureState) => true,
-        onPanResponderMove: (evt, gestureState) => {
-          pan.setValue({ x: gestureState.dx, y: gestureState.dy })
-        },
-        onPanResponderRelease: (evt, gestureState) => {},
-      })
+  //   const swipeStack = () =>
+  //     data &&
+  //     data.map((restaurant) => {
+  //       const pan = new Animated.ValueXY()
+  //       const panResponder = PanResponder.create({
+  //         onStartShouldSetPanResponder: (evt, gestureState) => true,
+  //         onPanResponderMove: (evt, gestureState) => {
+  //           pan.setValue({ x: gestureState.dx, y: gestureState.dy })
+  //         },
+  //         onPanResponderRelease: (evt, gestureState) => {},
+  //       })
 
-      return (
-        <Animated.View
-          {...panResponder.panHandlers}
-          key={restaurant.id}
-          style={[
-            { transform: pan.getTranslateTransform() },
-            {
-              height: SCREEN_HEIGHT - 120,
-              width: SCREEN_WIDTH,
-              padding: 10,
-              position: 'absolute',
-            },
-          ]}
-        >
-          {data && (
-            <Image
-              style={{
-                flex: 1,
-                height: null,
-                width: null,
-                resizeMode: 'cover',
-                borderRadius: 20,
-              }}
-              source={{ uri: restaurant.imageURL }}
-            />
-          )}
-        </Animated.View>
-      )
-    })
+  //       return (
+  //         <Animated.View
+  //           {...panResponder.panHandlers}
+  //           key={restaurant.id}
+  //           style={[
+  //             { transform: pan.getTranslateTransform() },
+  //             {
+  //               height: SCREEN_HEIGHT - 120,
+  //               width: SCREEN_WIDTH,
+  //               padding: 10,
+  //               position: 'absolute',
+  //             },
+  //           ]}
+  //         >
+  //           {data && (
+  //             <Image
+  //               style={{
+  //                 flex: 1,
+  //                 height: null,
+  //                 width: null,
+  //                 resizeMode: 'cover',
+  //                 borderRadius: 20,
+  //               }}
+  //               source={{ uri: restaurant.imageURL }}
+  //             />
+  //           )}
+  //         </Animated.View>
+  //       )
+  //     })
 
   useEffect(() => {
     const abortController = new AbortController()
@@ -114,8 +113,7 @@ const SwipeScreen = () => {
 
   return (
     <View style={{ flex: 1 }}>
-      <View style={{ height: 60 }}></View>
-      <View style={{ flex: 1 }}>{data && swipeStack()}</View>
+      <View style={{ flex: 1 }}>{data && <CardDeck data={data} />}</View>
       <View style={{ height: 60 }}></View>
     </View>
   )
