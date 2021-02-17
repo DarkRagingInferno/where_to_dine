@@ -14,7 +14,7 @@ const NoMoreCards = () => {
 
 const Card = ({ cardData }) => {
   return (
-    <View style={[styles.card, { backgroundColor: 'white' }]}>
+    <View style={styles.card}>
       <WheelItem key={cardData.id} data={cardData}></WheelItem>
     </View>
   )
@@ -37,8 +37,8 @@ const CardDeck = ({ data }) => {
       renderCard={(cardData) => <Card cardData={cardData} />}
       keyExtractor={(cardData) => cardData.id}
       renderNoMoreCards={() => <NoMoreCards />}
-      stack={true}
-      stackDepth={2}
+      //   stack={true}
+      //   stackDepth={2}
       handleYup={handleYup}
       handleNope={handleNope}
     />
@@ -49,15 +49,15 @@ const styles = StyleSheet.create({
   card: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: wheelItemWidth,
-    height: wheelItemHeight,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
+    // width: wheelItemWidth,
+    // height: wheelItemHeight,
+    // shadowColor: '#000',
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 2,
+    // },
+    // shadowOpacity: 0.25,
+    // shadowRadius: 3.84,
   },
   noMoreCardsText: {
     fontSize: 22,
