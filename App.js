@@ -13,8 +13,12 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <NavigationContainer style={styles.container}>
-        <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="Home" component={MainScreen} />
+        <Stack.Navigator initialRouteName="Home" mode="modal">
+          <Stack.Screen 
+            name="Home" 
+            component={MainScreen} 
+            options={{ title: "Where To Dine?", headerTitleAlign: 'center'}}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
