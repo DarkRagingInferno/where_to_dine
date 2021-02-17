@@ -28,6 +28,8 @@ export default function App() {
                 iconName = focused ? 'heart' : 'heart-outline'
               } else if (route.name === 'Roulette') {
                 iconName = 'ship-wheel'
+              } else {
+                iconName = 'arrow-left-right-bold'
               }
 
               return <Icon name={iconName} size={size} color={color} />
