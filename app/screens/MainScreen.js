@@ -1,24 +1,43 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { SafeAreaView } from "react-native-safe-area-context";
+import React from 'react'
+import { View, Text, StyleSheet } from 'react-native'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import { PRIMARY, DISABLED } from '../components/constants/Colors'
 
-import RouletteScreen from "../screens/RouletteScreen";
-import FavouritesScreen from "../screens/FavouriteScreen";
+import RouletteScreen from '../screens/RouletteScreen'
+import FavouritesScreen from '../screens/FavouriteScreen'
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator()
 
 const MainScreen = ({ navigation }) => (
-    <Tab.Navigator
-      initialRouteName="Roulette"
-      tabBarOptions={{
-        activeBackgroundColor: "transparent",
-      }}
-    >
-      <Tab.Screen name="Roulette" component={RouletteScreen} />
-      <Tab.Screen name="Favourites" component={FavouritesScreen} />
-    </Tab.Navigator>
-);
+  <Tab.Navigator
+    initialRouteName='Roulette'
+    screenOptions={({ route }) => ({
+      // TAB ICONS
+      tabBarIcon: ({ focused, color, size }) => {
+        let iconName
+
+        if (route.name === 'Favourites') {
+          iconName = focused ? 'heart' : 'heart-outline'
+        } else if (route.name === 'Roulette') {
+          iconName = 'ship-wheel'
+        }
+
+        return <Icon name={iconName} size={size} color={color} />
+      },
+    })}
+    tabBarOptions={{
+      activeBackgroundColor: 'transparent',
+      // TAB COLOURS
+      activeTintColor: PRIMARY,
+      inactiveTintColor: DISABLED,
+    }}
+  >
+    <Tab.Screen name='Roulette' component={RouletteScreen} />
+    <Tab.Screen name='Favourites' component={FavouritesScreen} />
+  </Tab.Navigator>
+)
 
 // const styles = StyleSheet.create({
 //     container: {
@@ -28,4 +47,4 @@ const MainScreen = ({ navigation }) => (
 //     }
 // })
 
-export default MainScreen;
+export default MainScreen
