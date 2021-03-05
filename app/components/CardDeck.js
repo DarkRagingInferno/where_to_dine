@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, StyleSheet, Text } from 'react-native'
 import { wheelItemWidth, wheelItemHeight } from '../config/Utilities'
 import SwipeCards from 'react-native-swipe-cards-deck'
@@ -21,13 +21,18 @@ const Card = ({ cardData }) => {
 }
 
 const CardDeck = ({ data }) => {
+  const [yupList, setYupList] = useState([])
+  const [nopeList, setNopeList] = useState([])
+
   const handleYup = (card) => {
     console.log(`Liked ${card.name}`)
+    setYupList([...yupList, card])
     return true
   }
 
   const handleNope = (card) => {
     console.log(`Noped ${card.name}`)
+    setNopeList([...nopeList, card])
     return true
   }
 
