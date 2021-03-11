@@ -1,5 +1,9 @@
 import React, { useCallback } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { 
+  View, 
+  Text, 
+  StyleSheet,
+  TouchableOpacity } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import FavouriteScreen from "../screens/FavouriteScreen";
@@ -8,18 +12,42 @@ import FavouriteScreen from "../screens/FavouriteScreen";
 const Stack = createStackNavigator();
 
 const FavouriteStackScreen = ({ navigation }) => {
-  return (
-   
-        <Stack.Navigator initialRouteName="Home" mode="modal">
-          <Stack.Screen
-            name="Favourites"
-            component={FavouriteScreen}
-            options={{ headerTitleAlign: "center" }}
-          />
-        </Stack.Navigator>
 
+  const doSomething = () => {
+    alert("From A to Z (Not Amazon lul! ;P)")
+  }
+
+  return (
+    <Stack.Navigator initialRouteName="Home" mode="modal">
+      <Stack.Screen
+        name="Favourites"
+        component={FavouriteScreen}
+        options={{
+          headerTitleAlign: "center",
+          headerRight: () => (
+            <TouchableOpacity onPress={doSomething}style={styles.headerRight}>
+              <Text style={styles.headerRightText}>A-Z</Text>
+            </TouchableOpacity>
+            // <Button
+            // onPress={() => alert('This is a button!')}
+            // title="A-Z"
+            // color="#000"
+            // />
+          ),
+        }}
+      />
+    </Stack.Navigator>
   );
 };
+
+const styles = StyleSheet.create({
+  headerRight: {
+    marginRight: 10
+  },
+  headerRightText: {
+    color: "#0072F7"
+  }
+})
 // return (
 //   <Tab.Navigator
 //     initialRouteName="Roulette"
